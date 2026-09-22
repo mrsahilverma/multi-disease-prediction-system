@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction Result{% endblock %}
+
+
+{% block content %}
+<style>
+    .result-container {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .result-icon {
+        font-size: 100px;
+        margin-bottom: 20px;
+        animation: bounceIn 0.6s;
+    }
+    
+    @keyframes bounceIn {
+        0% { transform: scale(0); opacity: 0; }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .result-header h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .result-status {
+        display: inline-block;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 20px 0;
+        animation: slideIn 0.5s;
+    }
+    
+    @keyframes slideIn {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .result-positive {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        color: white;
+    }
+    
+    .result-negative {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        color: white;
+    }
+    
+    .result-details {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 30px 0;
+        text-align: left;
+    }
+    
+    .result-details h3 {
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    
+    .detail-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .detail-item:last-child {
+        border-bottom: none;
+    }
+    
+    .detail-label {
+        color: #666;
+        font-weight: 600;
+    }
+    
+    .detail-value {
+        color: #333;
+        font-weight: 700;
+    }
+    
+    .probability-bar {
+        width: 100%;
+        height: 30px;
+        background: #e0e0e0;
+        border-radius: 15px;
+        overflow: hidden;
+        margin: 10px 0;
+    }
+    
+    .probability-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        transition: width 1s ease;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+    }
+    
+    .btn {
+        flex: 1;
+        padding: 15px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+    
+    .btn-secondary {
+        background: #f8f9fa;
+        color: #667eea;
+        border: 2px solid #667eea;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .disclaimer {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin-top: 30px;
+        border-radius: 8px;
+        text-align: left;
+    }
+    
+    .disclaimer h4 {
+        color: #856404;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+    
+    .disclaimer p {
+        color: #856404;
+        font-size: 14px;
+        margin: 0;
+        line-height: 1.5;
+    }
+    
+    .error-container {
+        background: #fee;
+        border-left: 4px solid #e74c3c;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    .error-container h3 {
+        color: #e74c3c;
+        margin-bottom: 10px;
+    }
+    
+    .error-container p {
+        color: #c0392b;
+    }
+</style>
+
+{% if error %}
+<div class="result-container">
+    <div class="result-icon">⚠️</div>
+    <div class="error-container">
+        <h3>Error Occurred</h3>
+        <p>{{ error }}</p>
+    </div>
+    <div class="action-buttons">
+        <a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+        <a href="/" class="btn btn-secondary">Home</a>
+    </div>
+</div>
+{% else %}
+<div class="result-container">
+    <div class="result-icon">
+        {% if result.result == 'Positive' %}
+            ⚠️
+        {% else %}
+            ✅
+        {% endif %}
+    </div>
+    
+    <div class="result-header">
+        <h2>{{ result.disease }} Prediction</h2>
+    </div>
+    
+    <div class="result-status {% if result.result == 'Positive' %}result-positive{% else %}result-negative{% endif %}">
+        {{ result.result }}
+    </div>
+    
+    <div class="result-details">
+        <h3>Prediction Details</h3>
+        <div class="detail-item">
+            <span class="detail-label">Disease Type:</span>
+            <span class="detail-value">{{ result.disease }}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Prediction:</span>
+            <span class="detail-value">{{ result.result }}</span>
+        </div>
+        {% if result.probability %}
+        <div class="detail-item">
+            <span class="detail-label">Confidence:</span>
+            <span class="detail-value">{{ "%.2f"|format(result.probability) }}%</span>
+        </div>
+        <div style="margin-top: 15px;">
+            <div class="probability-bar">
+                <div class="probability-fill" style="width: {{ result.probability }}%">
+                    {{ "%.1f"|format(result.probability) }}%
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="disclaimer">
+        <h4>⚕️ Medical Disclaimer</h4>
+        <p>
+            This prediction is based on machine learning models and should NOT be considered as a medical diagnosis. 
+            Please consult with a qualified healthcare professional for proper medical advice, diagnosis, and treatment.
+        </p>
+    </div>
+    
+    <div class="action-buttons">
+        <a href="/" class="btn btn-primary">Test Another Disease</a>
+        <a href="javascript:history.back()" class="btn btn-secondary">Back to Form</a>
+    </div>
+</div>
+{% endif %}
+
+<script>
+    // Animate probability bar on load
+    window.addEventListener('load', function() {
+        const fill = document.querySelector('.probability-fill');
+        if (fill) {
+            const width = fill.style.width;
+            fill.style.width = '0%';
+            setTimeout(() => {
+                fill.style.width = width;
+            }, 100);
+        }
+    });
+</script>
+{% endblock %}
