@@ -197,13 +197,6 @@ The notebooks can be opened with Jupyter Notebook or JupyterLab.
 
 The main dependencies are listed in `requirements.txt`.
 
-The project uses:
-
-```text
-scikit-learn==1.5.1
-```
-
-The version is pinned to maintain compatibility with the serialized machine learning models included in the repository.
 
 ## Future Improvements
 
