@@ -1,37 +1,131 @@
-# Multi-Disease Prediction System
+# 🩺 Multi-Disease Prediction System
 
-A Flask-based machine learning web application for predicting the risk of four diseases:
+A **machine learning portfolio project** that combines data analysis, machine learning, and Flask web development to build a web-based system for predicting four health-related conditions:
 
-- Heart Disease
-- Diabetes
-- Kidney Disease
-- Liver Disease
+**Heart Disease · Diabetes · Kidney Disease · Liver Disease**
 
-The project provides separate prediction forms for each disease and uses trained machine learning models to generate predictions through a simple web interface.
+The project demonstrates an end-to-end workflow — from dataset exploration and preprocessing to model training, model serialization, and integration into a working Flask application.
 
-> **Medical Disclaimer:** This project is intended for educational and demonstration purposes only. Its predictions are not medical diagnoses and should not be used as a substitute for professional medical advice, examination, or treatment.
+> ⚠️ **Medical Disclaimer:** This project is for educational and portfolio purposes only. Predictions are not medical diagnoses and should not be used as a substitute for professional medical advice, examination, or treatment.
 
-## Project Overview
+---
 
-The system combines machine learning models with a Flask web application. Users enter health-related information through a web form, the application processes the input, loads the corresponding trained model, and displays the prediction result.
+## 🎯 Project Objective
 
-### Supported Diseases
+The goal of this project was to build a single web application where users can select a disease, enter the required health parameters, and receive a machine-learning-based prediction.
 
-| Disease | Dataset | Model |
-|---|---|---|
-| Heart Disease | Heart Disease dataset | `heart_model.pkl` |
-| Diabetes | Pima Indians Diabetes Database | `diabetes_model.pkl` |
-| Kidney Disease | Chronic Kidney Disease dataset | `kidney_model.pkl` |
-| Liver Disease | Indian Liver Patient Dataset (ILPD) | `liver_model.pkl` |
+This project was also designed to demonstrate practical skills relevant to **Data Analyst / Data Science / Machine Learning** roles:
 
-## Project Structure
+- Python programming
+- Data preprocessing
+- Exploratory Data Analysis (EDA)
+- Feature preparation
+- Machine learning
+- Model evaluation
+- Data visualization
+- Model serialization
+- Flask application development
+- Git & GitHub
+
+---
+
+## 🚀 Key Features
+
+- Four independent disease prediction modules
+- Separate input forms for each disease
+- Pre-trained machine learning models
+- Flask-based web application
+- Prediction result page
+- Probability output where supported by the trained model
+- Disease-specific Jupyter notebooks
+- Dataset and trained model files included
+- Reproducible Python dependencies through `requirements.txt`
+
+---
+
+## 🖥️ Application Preview
+
+### Home Page
+
+![Home Page](screenshots/home.png)
+
+### Heart Disease Prediction
+
+![Heart Disease Prediction](screenshots/heart.png)
+
+### Diabetes Prediction
+
+![Diabetes Prediction](screenshots/diabetes.png)
+
+### Kidney Disease Prediction
+
+![Kidney Disease Prediction](screenshots/kidney.png)
+
+### Liver Disease Prediction
+
+![Liver Disease Prediction](screenshots/liver.png)
+
+### Prediction Result
+
+![Prediction Result](screenshots/result.png)
+
+---
+
+## 🧠 Solution Workflow
+
+```text
+                ┌─────────────────┐
+                │     Dataset     │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │ Data Preprocess │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │       EDA       │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │ Feature Prepare │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │ Model Training  │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │ Model Evaluation│
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │ Save Model .pkl │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │ Flask Web App   │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │   User Input    │
+                └────────┬────────┘
+                         ↓
+                ┌─────────────────┐
+                │    Prediction   │
+                └─────────────────┘
+```
+
+---
+
+## 📂 Project Structure
 
 ```text
 multi-disease-prediction-system/
 │
+├── README.md
+├── .gitignore
 ├── app.py
 ├── requirements.txt
-├── .gitignore
 │
 ├── datasets/
 │   ├── diabetes.csv
@@ -51,6 +145,14 @@ multi-disease-prediction-system/
 │   ├── kidney.ipynb
 │   └── liver.ipynb
 │
+├── screenshots/
+│   ├── home.png
+│   ├── heart.png
+│   ├── diabetes.png
+│   ├── kidney.png
+│   ├── liver.png
+│   └── result.png
+│
 └── templates/
     ├── base.html
     ├── index.html
@@ -61,52 +163,98 @@ multi-disease-prediction-system/
     └── result.html
 ```
 
-## Technology Stack
+---
 
-- **Python 3.12**
-- **Flask** — web application framework
-- **Pandas** — data manipulation
-- **NumPy** — numerical computing
-- **Scikit-learn 1.5.1** — machine learning
-- **XGBoost** — gradient boosting models
-- **Seaborn** — data visualization
-- **Joblib / Pickle** — model serialization
-- **Jupyter Notebook** — model development and analysis
-- **HTML/CSS** — web interface
+## 🛠️ Tech Stack
 
-## Machine Learning Workflow
+| Category | Technologies |
+|---|---|
+| Language | Python 3.12 |
+| Web Framework | Flask |
+| Data Analysis | Pandas, NumPy |
+| Machine Learning | Scikit-learn, XGBoost |
+| Visualization | Seaborn |
+| Model Serialization | Pickle / Joblib |
+| Development | Jupyter Notebook, VS Code |
+| Version Control | Git, GitHub |
+| Frontend | HTML, CSS |
 
-The project follows a typical machine learning workflow:
+### Dependency Version
+
+The project uses:
 
 ```text
-Dataset
-   ↓
-Data Loading
-   ↓
-Data Cleaning / Preprocessing
-   ↓
-Exploratory Data Analysis
-   ↓
-Feature Preparation
-   ↓
-Model Training
-   ↓
-Model Evaluation
-   ↓
-Model Serialization
-   ↓
-Flask Application
-   ↓
-User Input
-   ↓
-Prediction
-   ↓
-Result
+scikit-learn==1.5.1
 ```
 
-The individual notebooks contain the disease-specific data analysis and model development work.
+The version is pinned to maintain compatibility with the serialized models included in the repository.
 
-## Running the Project Locally
+---
+
+## 📊 Datasets
+
+The project uses datasets distributed through **Kaggle and the UCI Machine Learning Repository**.
+
+### Diabetes
+
+**Pima Indians Diabetes Database**
+
+Features include:
+
+- Pregnancies
+- Glucose
+- Blood Pressure
+- Skin Thickness
+- Insulin
+- BMI
+- Diabetes Pedigree Function
+- Age
+- Outcome
+
+### Heart Disease
+
+The project uses a 1,025-record heart disease CSV containing 14 columns, including patient attributes and the target variable.
+
+### Kidney Disease
+
+**Chronic Kidney Disease Dataset**
+
+Original source:
+
+UCI Machine Learning Repository  
+https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease
+
+### Liver Disease
+
+**Indian Liver Patient Dataset (ILPD)**
+
+Original source:
+
+UCI Machine Learning Repository  
+https://archive.ics.uci.edu/dataset/225/ilpd+indian+liver+patient+dataset
+
+The UCI listing identifies the ILPD dataset under **CC BY 4.0**.
+
+> Dataset-specific terms and attribution requirements should be checked before redistributing or reusing the datasets.
+
+---
+
+## 📓 Machine Learning Notebooks
+
+The `notebooks/` directory contains the individual model-development notebooks:
+
+| Notebook | Purpose |
+|---|---|
+| `diabetes.ipynb` | Diabetes data analysis and model development |
+| `heart.ipynb` | Heart disease data analysis and model development |
+| `kidney.ipynb` | Kidney disease data analysis and model development |
+| `liver.ipynb` | Liver disease data analysis and model development |
+
+The notebooks provide the data science side of the project, while `app.py` connects the trained models to the Flask interface.
+
+---
+
+## 💻 Run the Project Locally
 
 ### 1. Clone the repository
 
@@ -115,12 +263,15 @@ git clone https://github.com/mrsahilverma/multi-disease-prediction-system.git
 cd multi-disease-prediction-system
 ```
 
-### 2. Create and activate a Python environment
-
-Using Conda:
+### 2. Create the Conda environment
 
 ```bash
 conda create -n multi_disease python=3.12
+```
+
+Activate it:
+
+```bash
 conda activate multi_disease
 ```
 
@@ -130,97 +281,107 @@ conda activate multi_disease
 pip install -r requirements.txt
 ```
 
-### 4. Start the Flask application
+### 4. Run the Flask application
 
 ```bash
 python app.py
 ```
 
-Then open the local address shown by Flask in your browser.
+Open the local Flask URL shown in the terminal, typically:
 
-## Dataset Sources
+```text
+http://127.0.0.1:5000
+```
 
-The project uses publicly available datasets associated with Kaggle and the UCI Machine Learning Repository.
+---
 
-### Diabetes
+## 🔍 Prediction Output
 
-**Pima Indians Diabetes Database**
+The application returns a prediction result for the selected disease.
 
-The dataset contains medical diagnostic measurements used for diabetes prediction and is commonly distributed through Kaggle.
+Where supported by the trained model, the application also displays a value obtained through `predict_proba()`.
 
-### Heart Disease
+**Important:** This probability/confidence output is a model output for the supplied input. It is **not model accuracy and should not be interpreted as medical certainty**.
 
-**Heart Disease Dataset**
+---
 
-The `heart.csv` file used by this project contains 1,025 records and 14 columns and is a Kaggle-distributed heart disease dataset based on the commonly used UCI heart disease data.
+## 📈 Model Evaluation
 
-### Kidney Disease
+Model development and evaluation are performed inside the individual notebooks.
 
-**Chronic Kidney Disease Dataset**
+The repository does not list unsupported or invented performance numbers. Evaluation metrics should be taken directly from the corresponding notebook/model experiments.
 
-Original source:
+---
 
-UCI Machine Learning Repository — Chronic Kidney Disease Dataset
+## 💡 What This Project Demonstrates
 
-https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease
+### Data Analysis
 
-### Liver Disease
+- Dataset loading
+- Data cleaning and preprocessing
+- Exploratory data analysis
+- Feature preparation
+- Data visualization
 
-**Indian Liver Patient Dataset (ILPD)**
+### Machine Learning
 
-Original source:
+- Model training
+- Model evaluation
+- Prediction
+- Probability estimation
+- Model serialization
 
-UCI Machine Learning Repository — ILPD
+### Application Development
 
-https://archive.ics.uci.edu/dataset/225/ilpd+indian+liver+patient+dataset
+- Flask routing
+- HTML templates
+- User input handling
+- Model integration
+- Prediction result rendering
 
-The UCI listing identifies the dataset with a **CC BY 4.0** license. Please retain appropriate attribution when redistributing the dataset.
+### Development Workflow
 
-## Model Outputs
+- Jupyter Notebook
+- VS Code
+- Conda environment
+- Git version control
+- GitHub repository management
 
-The application displays a prediction result and, where supported by the trained model, a probability/confidence value returned by `predict_proba()`.
+---
 
-These values represent the model's output for the supplied input. They **must not be interpreted as medical certainty or as model accuracy**.
+## 🔮 Future Improvements
 
-## Notebooks
+- [ ] Add stronger input validation
+- [ ] Add automated tests
+- [ ] Improve model comparison and tuning
+- [ ] Add model explainability
+- [ ] Improve UI/UX
+- [ ] Add API endpoints
+- [ ] Add cloud deployment
+- [ ] Add additional prediction modules
+- [ ] Improve handling of missing/invalid inputs
 
-The `notebooks/` directory contains separate notebooks for:
+---
 
-- Diabetes data analysis and model development
-- Heart disease data analysis and model development
-- Kidney disease data analysis and model development
-- Liver disease data analysis and model development
-
-The notebooks can be opened with Jupyter Notebook or JupyterLab.
-
-## Requirements
-
-The main dependencies are listed in `requirements.txt`.
-
-
-## Future Improvements
-
-Possible future improvements include:
-
-- Improved model evaluation and comparison
-- Hyperparameter tuning
-- More robust input validation
-- Improved UI/UX
-- Model explainability
-- Additional disease prediction models
-- Deployment to a cloud platform
-- Automated testing
-- Better handling of missing and invalid input values
-
-## Author
+## 👨‍💻 About the Author
 
 **Sahil Verma**
 
-- GitHub: https://github.com/mrsahilverma
-- LinkedIn: https://www.linkedin.com/in/mrsahilverma/
+MCA graduate focused on **Data Analytics, Data Science, Python, SQL, Power BI, Machine Learning, and AI-enabled analytics**.
 
-## License
+### Connect
 
-No project license has currently been specified.
+- **GitHub:** https://github.com/mrsahilverma
+- **LinkedIn:** https://www.linkedin.com/in/mrsahilverma/
 
-If you plan to distribute or reuse this project, review the licenses and attribution requirements of the individual datasets and dependencies before adding a project-level license.
+---
+
+## ⭐ Repository
+
+If you are exploring this project for learning, data science, or machine learning development, feel free to explore the notebooks, datasets, models, and Flask application.
+
+---
+
+## ⚖️ Disclaimer
+
+This application is an educational machine learning project. It is not a clinical decision-support system and should not be used to diagnose, treat, or make medical decisions about any person.
